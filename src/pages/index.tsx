@@ -1,10 +1,15 @@
 ﻿import React from 'react';
-import Link from 'next/link';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import Gallery from '../components/Gallery';
+import { smoothScrollTo } from '../utils/scrollToSection';
 
 const HomePage = () => {
+  const handleScroll = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    smoothScrollTo(selector);
+  };
+
   return (
     <div className="site-wrapper">
       <Header />
@@ -24,12 +29,12 @@ const HomePage = () => {
               planliyor, renk paletinizi sizinle birlikte kurguluyoruz.
             </p>
             <div className="hero__cta">
-              <Link href="#products" className="btn btn--primary">
+              <a href="#products" className="btn btn--primary" onClick={handleScroll('#products')}>
                 Koleksiyonu Gor
-              </Link>
-              <Link href="#contact" className="btn btn--ghost">
+              </a>
+              <a href="#contact" className="btn btn--ghost" onClick={handleScroll('#contact')}>
                 Tasarim Talep Et
-              </Link>
+              </a>
             </div>
             <div className="hero__highlight-grid">
               <div className="hero__highlight">

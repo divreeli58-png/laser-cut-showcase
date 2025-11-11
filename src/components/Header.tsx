@@ -1,6 +1,7 @@
 ﻿import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { smoothScrollTo } from '../utils/scrollToSection';
 
 type HeaderProps = {
   variant?: 'default' | 'hero';
@@ -9,6 +10,11 @@ type HeaderProps = {
 const LOGO_URL = '/logo-lavina.svg';
 
 const Header: React.FC<HeaderProps> = ({ variant = 'default' }) => {
+  const handleScroll = (selector: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    smoothScrollTo(selector);
+  };
+
   return (
     <header className={`site-header ${variant === 'hero' ? 'site-header--hero' : ''}`}>
       <Link href="/" className="site-header__brand">
@@ -21,12 +27,16 @@ const Header: React.FC<HeaderProps> = ({ variant = 'default' }) => {
         </div>
       </Link>
       <nav className="site-header__nav">
-        <Link href="/#products">Urunler</Link>
-        <Link href="/#contact">Iletisim</Link>
+        <a href="#products" onClick={handleScroll('#products')}>
+          Urunler
+        </a>
+        <a href="#contact" onClick={handleScroll('#contact')}>
+          Iletisim
+        </a>
       </nav>
-      <Link className="site-header__cta" href="/#products">
+      <a className="site-header__cta" href="#products" onClick={handleScroll('#products')}>
         Koleksiyonu gor
-      </Link>
+      </a>
     </header>
   );
 };
