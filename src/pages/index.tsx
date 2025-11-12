@@ -12,7 +12,7 @@ const HomePage = () => {
 
   return (
     <div className="site-wrapper">
-      <Header />
+      <Header variant="hero" />
       <main>
         <section className="hero" id="hero">
           <div className="hero__content">

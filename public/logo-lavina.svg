@@ -1,22 +1,86 @@
-<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+<svg width="768" height="768" viewBox="0 0 768 768" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <filter id="glow" x="-70%" y="-70%" width="240%" height="240%">
-      <feGaussianBlur stdDeviation="16" result="blur" />
-      <feMerge>
-        <feMergeNode in="blur" />
-        <feMergeNode in="SourceGraphic" />
-      </feMerge>
+    <radialGradient id="bg-gradient" cx="50%" cy="50%" r="65%">
+      <stop offset="0%" stop-color="#4b4b4f" />
+      <stop offset="55%" stop-color="#36363a" />
+      <stop offset="100%" stop-color="#18181c" />
+    </radialGradient>
+    <radialGradient id="center-halo" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2f2f2f" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.1" />
+    </radialGradient>
+    <filter id="halo-blur" x="-150%" y="-150%" width="400%" height="400%">
+      <feGaussianBlur stdDeviation="80" />
     </filter>
+    <filter id="petal-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feDropShadow dx="0" dy="0" stdDeviation="10" flood-color="#0f0f12" flood-opacity="0.65" />
+    </filter>
+    <path
+      id="petal"
+      d="M0 -210 C95 -130 95 130 0 210 C-95 130 -95 -130 0 -210Z"
+    />
+    <linearGradient id="petal-yellow" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#ffef6e" />
+      <stop offset="100%" stop-color="#ffca2e" />
+    </linearGradient>
+    <linearGradient id="petal-green" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#90ff9d" />
+      <stop offset="100%" stop-color="#00b488" />
+    </linearGradient>
+    <linearGradient id="petal-teal" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#86f8ff" />
+      <stop offset="100%" stop-color="#06a9ff" />
+    </linearGradient>
+    <linearGradient id="petal-blue" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#7dd1ff" />
+      <stop offset="100%" stop-color="#2e57ff" />
+    </linearGradient>
+    <linearGradient id="petal-violet" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#f875ff" />
+      <stop offset="100%" stop-color="#ad2aff" />
+    </linearGradient>
+    <linearGradient id="petal-pink" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#ff99d1" />
+      <stop offset="100%" stop-color="#ff3ca0" />
+    </linearGradient>
+    <linearGradient id="petal-red" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#ff9a8a" />
+      <stop offset="100%" stop-color="#ff3456" />
+    </linearGradient>
+    <linearGradient id="petal-orange" x1="0" y1="-210" x2="0" y2="210">
+      <stop offset="0%" stop-color="#ffd895" />
+      <stop offset="100%" stop-color="#ff7e29" />
+    </linearGradient>
   </defs>
-  <g filter="url(#glow)" transform="translate(256 256)">
-    <path d="M0 -130 Q55 -60 0 0 Q-55 -60 0 -130Z" fill="#ffe34f" />
-    <path d="M92 -92 Q50 -50 0 0 Q50 -50 92 -92Z" fill="#ffb02e" />
-    <path d="M130 0 Q55 -55 0 0 Q55 55 130 0Z" fill="#45d48c" />
-    <path d="M92 92 Q50 50 0 0 Q50 50 92 92Z" fill="#0fb2ff" />
-    <path d="M0 130 Q55 60 0 0 Q-55 60 0 130Z" fill="#ff4f5e" />
-    <path d="M-92 92 Q-50 50 0 0 Q-50 50 -92 92Z" fill="#ff66b8" />
-    <path d="M-130 0 Q-55 55 0 0 Q-55 -55 -130 0Z" fill="#6b45ff" />
-    <path d="M-92 -92 Q-50 -50 0 0 Q-50 -50 -92 -92Z" fill="#06d0c7" />
-    <circle r="18" fill="#ffffff" opacity="0.75" />
+
+  <rect width="768" height="768" rx="140" fill="url(#bg-gradient)" />
+
+  <circle cx="384" cy="384" r="270" fill="url(#center-halo)" opacity="0.65" />
+
+  <g transform="translate(384 384)">
+    <g opacity="0.55" filter="url(#halo-blur)">
+      <circle cx="0" cy="-160" r="120" fill="#ffe458" />
+      <circle cx="110" cy="-110" r="120" fill="#66ffb5" />
+      <circle cx="160" cy="0" r="120" fill="#36c6ff" />
+      <circle cx="110" cy="110" r="120" fill="#4e7dff" />
+      <circle cx="0" cy="160" r="120" fill="#ff6a9d" />
+      <circle cx="-110" cy="110" r="120" fill="#ff52c3" />
+      <circle cx="-160" cy="0" r="120" fill="#b26bff" />
+      <circle cx="-110" cy="-110" r="120" fill="#00ddd0" />
+    </g>
+
+    <g filter="url(#petal-glow)">
+      <use href="#petal" fill="url(#petal-yellow)" />
+      <use href="#petal" fill="url(#petal-green)" transform="rotate(45)" />
+      <use href="#petal" fill="url(#petal-teal)" transform="rotate(90)" />
+      <use href="#petal" fill="url(#petal-blue)" transform="rotate(135)" />
+      <use href="#petal" fill="url(#petal-violet)" transform="rotate(180)" />
+      <use href="#petal" fill="url(#petal-pink)" transform="rotate(225)" />
+      <use href="#petal" fill="url(#petal-red)" transform="rotate(270)" />
+      <use href="#petal" fill="url(#petal-orange)" transform="rotate(315)" />
+    </g>
+
+    <circle r="46" fill="#ffffff" opacity="0.92" />
+    <circle r="22" fill="#f4f4f4" />
   </g>
 </svg>
